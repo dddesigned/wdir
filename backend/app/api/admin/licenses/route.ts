@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { generateLicenseKey } from '@/lib/license-utils'
+import { sendWelcomeEmail } from '@/lib/email'
 import type { License } from '@/types/license'
 
 // GET /api/admin/licenses - List all licenses
@@ -109,6 +110,9 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       )
     }
+
+    // Send welcome email
+    await sendWelcomeEmail(email, company_name, inspector_name)
 
     return NextResponse.json({
       success: true,
