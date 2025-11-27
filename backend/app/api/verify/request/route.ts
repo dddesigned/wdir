@@ -14,20 +14,23 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check if email has an active license
-    const { data: license, error: licenseError } = await supabaseAdmin
+    // Check if email has an active license (take most recent if multiple)
+    const { data: licenses, error: licenseError } = await supabaseAdmin
       .from('licenses')
       .select('*')
       .eq('email', email)
       .eq('is_active', true)
-      .single()
+      .order('created_at', { ascending: false })
+      .limit(1)
 
-    if (licenseError || !license) {
+    if (licenseError || !licenses || licenses.length === 0) {
       return NextResponse.json(
         { success: false, message: 'No active license found for this email' },
         { status: 404 }
       )
     }
+
+    const license = licenses[0]
 
     // Check rate limiting (max 5 requests per hour)
     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString()
