@@ -34,7 +34,7 @@ export default function HomePage() {
                 </h1>
               </div>
               <p className="text-lg md:text-xl text-white drop-shadow-lg mb-8 max-w-2xl text-center">
-                Create industry-standard WDIR reports on your iOS device.
+                Create industry-standard WDI Reports on your iOS device.
                 Fast, accurate, and compliant with Texas regulations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -90,9 +90,9 @@ export default function HomePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold mb-2">Secure & Private</h3>
+            <h3 className="text-xl font-semibold mb-2">Works Offline</h3>
             <p className="text-gray-600">
-              All reports stored locally on your device. No cloud sync means complete privacy for your inspections.
+              No network connection required. All reports stored locally on your device, so you can work anywhere without relying on internet access.
             </p>
           </div>
 
@@ -231,7 +231,7 @@ export default function HomePage() {
               </div>
               <h3 className="font-semibold mb-2">Start Inspecting</h3>
               <p className="text-gray-600 text-sm">
-                Create professional WDIR reports in minutes
+                Create professional WDI Reports in minutes
               </p>
             </div>
           </div>
@@ -246,6 +246,8 @@ export default function HomePage() {
             <h3 className="font-semibold text-lg mb-2">Can I use my license on multiple devices?</h3>
             <p className="text-gray-600">
               Yes! Your license can be used on multiple devices. Perfect for using on your iPhone, iPad, and other devices as needed.
+              <br /><br />
+              <strong>Note:</strong> This app is only available for Apple mobile devices (iPhone and iPad).
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg border">
@@ -265,9 +267,9 @@ export default function HomePage() {
           <div className="bg-white p-6 rounded-lg border">
             <h3 className="font-semibold text-lg mb-2">What if I need help?</h3>
             <p className="text-gray-600">
-              Every license includes email support. Contact us at{' '}
+              Every license includes email support.{' '}
               <a href="mailto:miciah@dddesigned.com" className="text-blue-600 hover:underline">
-                miciah@dddesigned.com
+                Contact us
               </a>{' '}
               with any questions or issues.
             </p>
@@ -289,12 +291,12 @@ export default function HomePage() {
             <div className="flex items-center gap-2">
               <Image
                 src="/WDIR-icon.png"
-                alt="WDIR Inspector"
+                alt="Texas WDIR by Digital Data Designed"
                 width={32}
                 height={32}
                 className="w-8 h-8"
               />
-              <span className="font-semibold text-gray-900">WDIR Inspector</span>
+              <span className="font-semibold text-gray-900">Texas WDIR by Digital Data Designed</span>
             </div>
             <div className="flex gap-6 text-sm text-gray-600">
               <a href="mailto:miciah@dddesigned.com" className="hover:text-gray-900">
@@ -305,7 +307,7 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="text-sm text-gray-500">
-              © 2024 WDIR Inspector. All rights reserved.
+              © 2024 Digital Data Designed. All rights reserved.
             </div>
           </div>
         </div>
