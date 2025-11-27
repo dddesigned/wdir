@@ -77,7 +77,7 @@ export default function PurchasePage() {
           <div className="flex justify-between items-center">
             <div>
               <h2 className="text-lg font-semibold text-gray-900">Professional License</h2>
-              <p className="text-sm text-gray-600">One-time payment • Lifetime access</p>
+              <p className="text-sm text-gray-600">One-time payment, per inspector • Lifetime access</p>
             </div>
             <div className="text-3xl font-bold text-blue-600">$399</div>
           </div>

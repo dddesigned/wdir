@@ -147,7 +147,7 @@ export default function HomePage() {
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold mb-2">Professional License</h3>
               <div className="text-5xl font-bold text-blue-600 mb-2">$399</div>
-              <p className="text-gray-600">One-time payment</p>
+              <p className="text-gray-600">One-time payment, per inspector</p>
             </div>
 
             <ul className="space-y-3 mb-8">
