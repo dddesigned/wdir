@@ -25,6 +25,18 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Get the app URL from environment or construct from request
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ||
+      `https://${request.headers.get('host')}`
+
+    if (!appUrl || !appUrl.startsWith('http')) {
+      console.error('Invalid NEXT_PUBLIC_APP_URL:', appUrl)
+      return NextResponse.json(
+        { success: false, error: 'Server configuration error' },
+        { status: 500 }
+      )
+    }
+
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -35,7 +47,7 @@ export async function POST(request: NextRequest) {
             product_data: {
               name: 'WDIR Inspector - Professional License',
               description: 'Lifetime access to WDIR Inspector app with all future updates',
-              images: [`${process.env.NEXT_PUBLIC_APP_URL}/WDIR-icon.png`]
+              images: [`${appUrl}/WDIR-icon.png`]
             },
             unit_amount: 39900 // $399.00 in cents
           },
@@ -43,8 +55,8 @@ export async function POST(request: NextRequest) {
         }
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/purchase/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/purchase`,
+      success_url: `${appUrl}/purchase/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${appUrl}/purchase`,
       customer_email: email,
       metadata: {
         email,
