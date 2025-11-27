@@ -54,12 +54,12 @@ export default function PurchasePage() {
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
             <Image
               src="/WDIR-icon.png"
-              alt="WDIR Inspector"
+              alt="Texas WDIR by Digital Data Designed"
               width={32}
               height={32}
               className="w-8 h-8"
             />
-            <span className="text-xl font-bold text-gray-900">WDIR Inspector</span>
+            <span className="text-xl font-bold text-gray-900">Texas WDIR by Digital Data Designed</span>
           </Link>
         </div>
       </header>
