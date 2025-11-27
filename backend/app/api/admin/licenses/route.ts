@@ -2,11 +2,14 @@ import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { generateLicenseKey } from '@/lib/license-utils'
 import { sendWelcomeEmail } from '@/lib/email'
+import { requireAdmin } from '@/lib/admin-auth'
 import type { License } from '@/types/license'
 
 // GET /api/admin/licenses - List all licenses
 export async function GET(request: NextRequest) {
   try {
+    await requireAdmin()
+
     const { data: licenses, error } = await supabaseAdmin
       .from('licenses')
       .select('*')
@@ -25,6 +28,13 @@ export async function GET(request: NextRequest) {
       licenses: licenses || []
     })
   } catch (error) {
+    if (error instanceof Error && error.message === 'Unauthorized') {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
     console.error('List licenses error:', error)
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
@@ -36,6 +46,8 @@ export async function GET(request: NextRequest) {
 // POST /api/admin/licenses - Create a new license
 export async function POST(request: NextRequest) {
   try {
+    await requireAdmin()
+
     const body = await request.json()
     const {
       email,
@@ -119,6 +131,13 @@ export async function POST(request: NextRequest) {
       license
     })
   } catch (error) {
+    if (error instanceof Error && error.message === 'Unauthorized') {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
     console.error('Create license error:', error)
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
