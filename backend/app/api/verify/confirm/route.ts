@@ -86,7 +86,9 @@ export async function POST(request: NextRequest) {
       success: true,
       license_key: license.license_key,
       company_name: license.company_name,
-      inspector_name: license.inspector_name
+      company_license_number: license.company_license_number,
+      inspector_name: license.inspector_name,
+      inspector_license: license.inspector_license
     })
 
   } catch (error) {
